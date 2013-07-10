@@ -1,0 +1,37 @@
+<h1>Edit <%=@cat.name%></h1>
+
+<form action="http://localhost:3000/cats/<%=params[:id]%>" method="post">
+
+  <label for="cat_name">Name:</label>
+  <input type="text" name="cat[name]" value="<%=@cat.name%>">
+  <br>
+
+  <label for="cat_birthday">Birthday:</label>
+  <input type="date" name="cat[birthday]" value= "<%=@cat.birthday%>">
+  <br>
+
+  <label for="cat_sex">Sex:</label>
+  <% malecheck = "checked" if @cat.sex == "male"%>
+  <% femalecheck = "checked" if @cat.sex == "female"%>
+  <input type="radio" name="cat[sex]" id="female" value="female" <%=femalecheck%> >
+  <label for="female">Female </label>
+  <input type="radio" name="cat[sex]" id="male" value="male" <%=malecheck%>>
+   <label for="male">Male</label>
+  <br>
+
+  <label for="cat_color">Color</label>
+  <select name="cat[color]">
+    <% redselect = "selected" if @cat.color == "red"%>
+    <% greenselect = "selected" if @cat.color == "green"%>
+    <% blueselect = "selected" if @cat.color == "blue"%>
+    <option <%=redselect%> value="red">Red</option>
+    <option <%=greenselect%> value="green">Green</option>
+    <option <%=blueselect%> value="blue">Blue</option>
+  </select>
+
+  <br> <br>
+  <input type="submit" value="Edit Cat">
+
+  <input type = "hidden" name = "_method" value = "put">
+
+</form>

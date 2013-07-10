@@ -1,0 +1,23 @@
+<h1>All Rental Requests</h1>
+<table>
+    <tr>
+        <td>name</td>
+        <td>sex</td>
+        <td>color</td>
+        <td>age</td>
+        <td>start date</td>
+        <td>end date</td>
+        <td>status</td>
+    </tr>
+   <% @cat_requests.each do |req| %>
+    <tr>
+        <td><%= req.cat.name %></td>
+        <td><%= req.cat.sex %></td>
+        <td><%= req.cat.color %></td>
+        <td><%= req.cat.age %></td>
+        <td><%= req.begin_date %></td>
+        <td><%= req.end_date %></td>
+        <td><%= req.status %></td>
+    </tr>
+  <%end%>
+</table>

@@ -1,0 +1,19 @@
+<h1>Make a Request</h1>
+
+<form action="<%= cat_rental_requests_url %>" method="post">
+
+  <label for="cat_id">ID:</label>
+  <input type="number" name="cat_rental_request[cat_id]">
+  <br>
+
+  <label for="begin_date">Start Date:</label>
+  <input type="date" name="cat_rental_request[begin_date]">
+  <br>
+  <label for="end_date">End Date:</label>
+  <input type="date" name="cat_rental_request[end_date]">
+  <br>
+
+  <br> <br>
+  <input type="submit" value="Submit Request">
+
+</form>

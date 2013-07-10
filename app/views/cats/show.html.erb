@@ -1,0 +1,28 @@
+<h1>ONE CAT!</h1>
+<h2> <%= @cat.name %> </h2>
+<ul>
+  <li><%= @cat.inspect %></li>
+</ul>
+
+
+<h2>Requests</h2>
+<table>
+    <tr>
+        <td>start date</td>
+        <td>end date</td>
+        <td>status</td>
+    </tr>
+   <% @cat.cat_rental_requests.sort_by {|r| r.begin_date }.each do |req| %>
+    <tr>
+        <td><%= req.begin_date %></td>
+        <td><%= req.end_date %></td>
+        <td><%= req.status %></td>
+        <td><></td>
+    </tr>
+  <%end%>
+</table>
+
+<form action="<%= cat_url(@cat.id) %>" method="post">
+    <button name="delete cat">Delete Cat</button>
+    <input type = "hidden" name = "_method" value = "delete">
+<form>
