@@ -25,7 +25,8 @@ Cats::Application.routes.draw do
   #     end
   #   end
   resources :cats, :cat_rental_requests
-
+  resources :users, :only => [:new, :create]
+  resources :sessions
   # Sample resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

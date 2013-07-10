@@ -17,12 +17,24 @@
         <td><%= req.begin_date %></td>
         <td><%= req.end_date %></td>
         <td><%= req.status %></td>
-        <td><></td>
+        <% next if (req.status == "approved" || req.status == "denied") %>
+        <td>
+          <form action="http://localhost:3000/cat_rental_requests/<%=req.id%>" method="post">
+              <input type="submit" name="request[status]" value= "approved">
+              <input type = "hidden" name = "_method" value = "put">
+          </form>
+        </td>
+        <td>
+          <form action="http://localhost:3000/cat_rental_requests/<%=req.id%>" method="post">
+              <input type="submit" name="request[status]" value= "denied">
+              <input type = "hidden" name = "_method" value = "put">
+          </form>
+        </td>
     </tr>
   <%end%>
 </table>
 
-<form action="<%= cat_url(@cat.id) %>" method="post">
+<form action="<%#= cat_url(@cat.id) %>" method="post">
     <button name="delete cat">Delete Cat</button>
     <input type = "hidden" name = "_method" value = "delete">
-<form>
+</form>

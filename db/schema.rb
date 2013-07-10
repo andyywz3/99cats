@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710154057) do
+ActiveRecord::Schema.define(:version => 20130710224506) do
 
   create_table "cat_rental_requests", :force => true do |t|
     t.integer  "cat_id"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20130710154057) do
     t.integer  "age"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "password"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.text     "token"
   end
 
 end

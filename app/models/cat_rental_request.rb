@@ -6,12 +6,13 @@ class CatRentalRequest < ActiveRecord::Base
   validate :valid_date, :no_conflict
 
   def approve
-    self.status = "approve"
+    self.status = "approved"
     self.save!
     other_requests = CatRentalRequest.where(
       "status = 'undecided' AND cat_id = ? AND  (? BETWEEN begin_date and end_date OR ? BETWEEN begin_date and end_date )",
       self.cat_id, self.begin_date, self.end_date)
     other_requests.each do |req|
+      p req
       req.status = 'denied'
       req.save!
     end
@@ -24,7 +25,7 @@ class CatRentalRequest < ActiveRecord::Base
   def no_conflict
     errors.add(:base, "request already exists") if CatRentalRequest.where(
       "status = 'approved' AND cat_id = ? AND  (? BETWEEN begin_date and end_date OR ? BETWEEN begin_date and end_date )",
-      self.cat_id, self.begin_date, self.end_date).any?
+      self.cat_id, self.begin_date, self.end_date).any? and self.status != "denied"
   end
 
 end
